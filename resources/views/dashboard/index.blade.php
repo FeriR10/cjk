@@ -26,192 +26,39 @@
     <section class="content">
 
         <div class="row">
-            <div class="col-md-3">
+            @if (auth()->user()->role_id == 3 || auth()->user()->role_id == 1)
+            <div class="col-md-6">
                 <!-- small box -->
                 <div class="small-box bg-info">
                     <div class="inner">
-                        <h3> </h3>
+                        <h3>Rp. {{ $total_keuntungan_dealer }} </h3>
 
-                        <p>Desk</p>
+                        <p>Total Keuntungan Penjualan Dealer</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-ios-book-outline"></i>
                     </div>
-                    <a href="/books" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="/penjualan-dealer-pulsa" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
+            @endif
+            @if (auth()->user()->role_id == 4 || auth()->user()->role_id == 1)
             <!-- ./col -->
-            <div class="col-md-3">
-                <!-- small box -->
-                <div class="small-box bg-success">
-                    <div class="inner">
-                        <h3> </h3>
-
-                        <p>Desk</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-ios-list-outline"></i>
-                    </div>
-                    <a href="/" class="small-box-footer">More info <i
-                            class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-md-3">
-                <!-- small box -->
-                <div class="small-box bg-warning">
-                    <div class="inner">
-                        <h3> </h3>
-
-                        <p>Desk</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-person-stalker"></i>
-                    </div>
-                    <a href="/" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-md-3">
+            <div class="col-md-6">
                 <!-- small box -->
                 <div class="small-box bg-info">
                     <div class="inner">
-                        <h3> </h3>
+                        <h3>Rp. {{ $total_keuntungan_biller }} </h3>
 
-                        <p>Desk</p>
+                        <p>Total Keuntungan Penjualan Biller</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-ios-book-outline"></i>
                     </div>
-                    <a href="/" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="/penjualan-biller-pulsa" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-3">
-                <!-- small box -->
-                <div class="small-box bg-info">
-                    <div class="inner">
-                        <h3> </h3>
-
-                        <p>Desk</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-ios-book-outline"></i>
-                    </div>
-                    <a href="/books" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-md-3">
-                <!-- small box -->
-                <div class="small-box bg-success">
-                    <div class="inner">
-                        <h3> </h3>
-
-                        <p>Desk</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-ios-list-outline"></i>
-                    </div>
-                    <a href="/" class="small-box-footer">More info <i
-                            class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-md-3">
-                <!-- small box -->
-                <div class="small-box bg-warning">
-                    <div class="inner">
-                        <h3> </h3>
-
-                        <p>Desk</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-person-stalker"></i>
-                    </div>
-                    <a href="/" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-md-3">
-                <!-- small box -->
-                <div class="small-box bg-info">
-                    <div class="inner">
-                        <h3> </h3>
-
-                        <p>Desk</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-ios-book-outline"></i>
-                    </div>
-                    <a href="/" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-3">
-                <!-- small box -->
-                <div class="small-box bg-info">
-                    <div class="inner">
-                        <h3> </h3>
-
-                        <p>Desk</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-ios-book-outline"></i>
-                    </div>
-                    <a href="/books" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-md-3">
-                <!-- small box -->
-                <div class="small-box bg-success">
-                    <div class="inner">
-                        <h3> </h3>
-
-                        <p>Desk</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-ios-list-outline"></i>
-                    </div>
-                    <a href="/" class="small-box-footer">More info <i
-                            class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-md-3">
-                <!-- small box -->
-                <div class="small-box bg-warning">
-                    <div class="inner">
-                        <h3> </h3>
-
-                        <p>Desk</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-person-stalker"></i>
-                    </div>
-                    <a href="/" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-md-3">
-                <!-- small box -->
-                <div class="small-box bg-info">
-                    <div class="inner">
-                        <h3> </h3>
-
-                        <p>Desk</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-ios-book-outline"></i>
-                    </div>
-                    <a href="/" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
+            @endif
         </div>
 
     </section>

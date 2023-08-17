@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Book Rent | @yield('title')</title>
+    <title>CJK | @yield('title')</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
@@ -39,13 +39,16 @@
                 <form action="/login-process" method="POST">
                     {{ csrf_field() }}
                     <div class="input-group mb-3">
-                        <input type="text" name="username" class="form-control" placeholder="Username">
+                        <input type="text" name="email" class="form-control" placeholder="Email">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
                             </div>
                         </div>
                     </div>
+                    @if($errors->has('email'))
+                        <span class="help-block text-danger">{{ $errors->first('email') }}</span>
+                    @endif
                     <div class="input-group mb-3">
                         <input type="password" name="password" class="form-control" placeholder="Password">
                         <div class="input-group-append">
@@ -54,6 +57,9 @@
                             </div>
                         </div>
                     </div>
+                    @if($errors->has('password'))
+                        <span class="help-block text-danger">{{ $errors->first('password') }}</span>
+                    @endif
                     <div class="row">
                         <!-- /.col -->
                         <div class="col-12">

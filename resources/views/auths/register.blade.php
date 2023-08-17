@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Book Rent | @yield('title')</title>
+    <title>CJK | @yield('title')</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
@@ -39,10 +39,17 @@
                 <form action="/register-process" method="POST">
                     {{ csrf_field() }}
                     <div>
-                        <label>Username</label>
-                        <input type="text" name="username" class="form-control" placeholder="Username" value="{{ old('username') }}">
-                        @if($errors->has('username'))
-                            <span class="help-block" style="color: red">{{ $errors->first('username') }}</span>
+                        <label>Name</label>
+                        <input type="text" name="name" class="form-control" placeholder="Name" value="{{ old('name') }}">
+                        @if($errors->has('name'))
+                            <span class="help-block" style="color: red">{{ $errors->first('name') }}</span>
+                        @endif
+                    </div>
+                    <div>
+                        <label>Email</label>
+                        <input type="email" name="email" class="form-control" placeholder="Email" value="{{ old('email') }}">
+                        @if($errors->has('email'))
+                            <span class="help-block" style="color: red">{{ $errors->first('email') }}</span>
                         @endif
                     </div>
                     <div>
@@ -50,20 +57,6 @@
                         <input type="password" name="password" class="form-control" placeholder="Password">
                         @if($errors->has('password'))
                             <span class="help-block" style="color: red">{{ $errors->first('password') }}</span>
-                        @endif
-                    </div>
-                    <div>
-                        <label>Phone</label>
-                        <input type="text" name="phone" class="form-control" placeholder="Phone" value="{{ old('phone') }}">
-                        @if($errors->has('phone'))
-                            <span class="help-block" style="color: red">{{ $errors->first('phone') }}</span>
-                        @endif
-                    </div>
-                    <div>
-                        <label>Address</label>
-                        <textarea name="address" class="form-control" value="{{ old('address') }}"></textarea>
-                        @if($errors->has('address'))
-                            <span class="help-block" style="color: red">{{ $errors->first('address') }}</span>
                         @endif
                     </div>
                     <hr>

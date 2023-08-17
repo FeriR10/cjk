@@ -7,6 +7,19 @@
         </li>
     </ul>
 
+    @if (auth()->user()->role_id == 1)
+        <h3>Admin</h3>
+    @endif
+    @if (auth()->user()->role_id == 2)
+        <h3>{{ auth()->user()->supplier->nama }}</h3>
+    @endif
+    @if (auth()->user()->role_id == 3)
+        <h3>{{ auth()->user()->dealer->nama }}</h3>
+    @endif
+    @if (auth()->user()->role_id == 4)
+        <h3>{{ auth()->user()->biller->nama }}</h3>
+    @endif
+
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
         <!-- Notifications Dropdown Menu -->
