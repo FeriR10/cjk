@@ -24,16 +24,32 @@
 
     <!-- Main content -->
     <section class="content">
-
+        @if ( auth()->user()->role_id == 1)
         <div class="row">
-            @if (auth()->user()->role_id == 3 || auth()->user()->role_id == 1)
+            <!-- ./col -->
+            <div class="col-md-6">
+                <!-- small box -->
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h3>Rp. {{ $total_keuntungan_supplier }} </h3>
+
+                        <p>Total Keuntungan Penjualan Supplier Pulsa</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-ios-book-outline"></i>
+                    </div>
+                    <a href="/penjualan-supplier-pulsa" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-md-6">
                 <!-- small box -->
                 <div class="small-box bg-info">
                     <div class="inner">
                         <h3>Rp. {{ $total_keuntungan_dealer }} </h3>
 
-                        <p>Total Keuntungan Penjualan Dealer</p>
+                        <p>Total Keuntungan Penjualan Dealer Pulsa</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-ios-book-outline"></i>
@@ -41,8 +57,8 @@
                     <a href="/penjualan-dealer-pulsa" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
-            @endif
-            @if (auth()->user()->role_id == 4 || auth()->user()->role_id == 1)
+        </div>
+        <div class="row">
             <!-- ./col -->
             <div class="col-md-6">
                 <!-- small box -->
@@ -50,7 +66,7 @@
                     <div class="inner">
                         <h3>Rp. {{ $total_keuntungan_biller }} </h3>
 
-                        <p>Total Keuntungan Penjualan Biller</p>
+                        <p>Total Keuntungan Penjualan Biller Pulsa</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-ios-book-outline"></i>
@@ -58,9 +74,63 @@
                     <a href="/penjualan-biller-pulsa" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
-            @endif
         </div>
+        @endif
+        @if (auth()->user()->role_id == 2)
+        <div class="row">
+            <div class="col-md-6">
+                <!-- small box -->
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h3>Rp. {{ $total_keuntungan_supplier }} </h3>
 
+                        <p>Total Keuntungan Penjualan Supplier Pulsa</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-ios-book-outline"></i>
+                    </div>
+                    <a href="/penjualan-supplier-pulsa" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+        </div>
+        @endif
+        @if (auth()->user()->role_id == 3)
+        <div class="row">
+            <div class="col-md-6">
+                <!-- small box -->
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h3>Rp. {{ $total_keuntungan_dealer }} </h3>
+
+                        <p>Total Keuntungan Penjualan Dealer Pulsa</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-ios-book-outline"></i>
+                    </div>
+                    <a href="/penjualan-dealer-pulsa" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+        </div>
+        @endif
+        @if (auth()->user()->role_id == 4)
+        <div class="row">
+            <!-- ./col -->
+            <div class="col-md-6">
+                <!-- small box -->
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h3>Rp. {{ $total_keuntungan_biller }} </h3>
+
+                        <p>Total Keuntungan Penjualan Biller Pulsa</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-ios-book-outline"></i>
+                    </div>
+                    <a href="/penjualan-biller-pulsa" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+        </div>
+        @endif
     </section>
     <!-- /.content -->
 </div>

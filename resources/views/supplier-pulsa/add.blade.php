@@ -43,12 +43,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label>Supplier</label>
-                            <select name="supplier_id" id="" class="form-control">
-                                {{-- <option value="">Pilih Supplier</option> --}}
-                                @foreach ($data_supplier as $supplier)
-                                    <option value="{{ $supplier->id }}"> {{ $supplier->nama }} </option>
-                                @endforeach
-                            </select>
+                            <input type="text" class="form-control" value="{{ $data_supplier->nama }}" readonly>
                         </div>
                         <div class="form-group">
                             <label>Nominal</label>
@@ -61,18 +56,20 @@
                         </div>
                         <div class="form-group">
                             <label>Kartu</label>
-                            <select name="kartu_id" id="" class="form-control">
-                                {{-- <option value="">Pilih Nominal</option> --}}
-                                @foreach ($data_kartu as $kartu)
-                                    <option value="{{ $kartu->id }}"> {{ $kartu->nama }} </option>
-                                @endforeach
-                            </select>
+                            <input type="text" class="form-control" value="{{ $data_kartu->nama }}" readonly>
                         </div>
                         <div class="form-group">
-                            <label>Harga Jual</label>
-                            <input type="text" name="harga_jual" class="form-control" placeholder="Enter Harga Jual" value="{{ old('harga_jual') }}">
-                            @if($errors->has('harga_jual'))
-                            <span class="help-block" style="color: red">{{ $errors->first('harga_jual') }}</span>
+                            <label>Harga Awal</label>
+                            <input type="text" name="harga_awal" class="form-control" placeholder="Enter Harga Awal" value="{{ old('harga_awal') }}">
+                            @if($errors->has('harga_awal'))
+                            <span class="help-block" style="color: red">{{ $errors->first('harga_awal') }}</span>
+                            @endif
+                        </div>
+                        <div class="form-group">
+                            <label>Switching</label>
+                            <input type="text" name="switching" class="form-control" placeholder="Enter Harga Switching" value="{{ old('switching') }}">
+                            @if($errors->has('switching'))
+                            <span class="help-block" style="color: red">{{ $errors->first('switching') }}</span>
                             @endif
                         </div>
                     </div>

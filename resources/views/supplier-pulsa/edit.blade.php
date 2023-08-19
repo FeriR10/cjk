@@ -47,10 +47,17 @@
                             <input type="text" name="harga_jual" class="form-control" placeholder="Enter Harga Jual" value="Kartu {{ $data_supplier_pulsa->kartu->nama }} Nominal {{ $data_supplier_pulsa->nominal }}" readonly>
                         </div>
                         <div class="form-group">
-                            <label>Harga Jual</label>
-                            <input type="number" name="harga_jual" class="form-control" placeholder="Enter Switching" value="{{ $data_supplier_pulsa->harga_jual }}">
-                            @if($errors->has('harga_jual'))
-                            <span class="help-block" style="color: red">{{ $errors->first('harga_jual') }}</span>
+                            <label>Harga Awal</label>
+                            <input type="number" min="1" name="harga_awal" class="form-control" value="{{ $data_supplier_pulsa->harga_awal }}">
+                            @if($errors->has('harga_awal'))
+                            <span class="help-block" style="color: red">{{ $errors->first('harga_awal') }}</span>
+                            @endif
+                        </div>
+                        <div class="form-group">
+                            <label>Switching</label>
+                            <input type="number" min="1" name="switching" class="form-control" value="{{ $data_supplier_pulsa->switching }}">
+                            @if($errors->has('switching'))
+                            <span class="help-block" style="color: red">{{ $errors->first('switching') }}</span>
                             @endif
                         </div>
                     </div>

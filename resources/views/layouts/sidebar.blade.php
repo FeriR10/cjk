@@ -139,7 +139,7 @@
                     </ul>
                 </li>
                 <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link {{ request()->is('penjualan-biller-pulsa', 'penjualan-biller-pulsa/add', 'penjualan-dealer-pulsa') ? 'active' : '' }}">
+                    <a href="#" class="nav-link {{ request()->is('penjualan-supplier-pulsa', 'penjualan-biller-pulsa', 'penjualan-biller-pulsa/add', 'penjualan-dealer-pulsa') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-copy"></i>
                         <p>
                             Penjualan
@@ -147,6 +147,15 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
+                        @if (auth()->user()->role_id == 2 || auth()->user()->role_id == 1)
+                        <li class="nav-item">
+                            <a href="/penjualan-supplier-pulsa"
+                                class="nav-link {{ request()->is('penjualan-supplier-pulsa') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>Penjualan Supplier Pulsa</p>
+                            </a>
+                        </li>
+                        @endif
                         @if (auth()->user()->role_id == 3 || auth()->user()->role_id == 1)
                         <li class="nav-item">
                             <a href="/penjualan-dealer-pulsa"

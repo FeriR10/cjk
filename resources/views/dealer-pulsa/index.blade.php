@@ -75,7 +75,7 @@
                             <td>Rp. {{ $dealer_pulsa->harga_beli }}</td>
                             <td>
                                 @if (auth()->user()->role_id == 3)
-                                <a class="btn btn-warning btn-sm" href="/dealer-pulsa/{{ $dealer_pulsa->id }}/tambah-saldo">Tambah Saldo</a>
+                                <a class="btn btn-info btn-sm" href="/dealer-pulsa/{{ $dealer_pulsa->id }}/tambah-saldo">Tambah Saldo</a>
                                 <a class="btn btn-warning btn-sm" href="/dealer-pulsa/{{ $dealer_pulsa->id }}/edit">Edit</a>
                                 {{-- <a class="btn btn-danger btn-sm" href="/dealer-pulsa/{{ $dealer_pulsa->id }}/delete"
                                 onClick="return confirm('Anda Yakin ?')">Delete</a> --}}

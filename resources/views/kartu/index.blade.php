@@ -61,7 +61,6 @@
                             <td>{{ $kartu->nama }}</td>
                             <td>
                                 @if (auth()->user()->role_id == 1)
-                                <a class="btn btn-warning btn-sm" href="/kartu/{{ $kartu->id }}/edit">Edit</a>
                                 {{-- <a class="btn btn-danger btn-sm" href="/kartu/{{ $kartu->id }}/delete"
                                 onClick="return confirm('Anda Yakin ?')">Delete</a> --}}
                                 @else

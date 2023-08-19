@@ -14,6 +14,7 @@ use App\Http\Controllers\DealerPulsaController;
 use App\Http\Controllers\SupplierPulsaController;
 use App\Http\Controllers\PenjualanBillerPulsaController;
 use App\Http\Controllers\PenjualanDealerPulsaController;
+use App\Http\Controllers\PenjualanSupplierPulsaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -91,6 +92,14 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/supplier-pulsa/{id}/edit', [SupplierPulsaController::class, 'edit']);
     Route::put('/supplier-pulsa/{id}/update', [SupplierPulsaController::class, 'update']);
     Route::put('/supplier-pulsa/{id}/delete', [SupplierPulsaController::class, 'delete']);
+    
+    // Penjualan Supplier Pulsa
+    Route::get('/penjualan-supplier-pulsa', [PenjualanSupplierPulsaController::class, 'index']);
+    Route::get('/penjualan-supplier-pulsa/add', [PenjualanSupplierPulsaController::class, 'add']);
+    Route::post('/penjualan-supplier-pulsa/create', [PenjualanSupplierPulsaController::class, 'create']);
+    Route::get('/penjualan-supplier-pulsa/{id}/edit', [PenjualanSupplierPulsaController::class, 'edit']);
+    Route::put('/penjualan-supplier-pulsa/{id}/update', [PenjualanSupplierPulsaController::class, 'update']);
+    Route::put('/penjualan-supplier-pulsa/{id}/delete', [PenjualanSupplierPulsaController::class, 'delete']);
 
     // Dealer
     Route::get('/dealer', [DealerController::class, 'index']);

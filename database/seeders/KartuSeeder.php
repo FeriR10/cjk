@@ -20,15 +20,16 @@ class KartuSeeder extends Seeder
         Schema::enableForeignKeyConstraints();
 
         $data = [
-            ['nama' => 'telkomsel' ],
-            ['nama' => 'indosat' ],
-            ['nama' => 'three' ],
+            ['nama' => 'telkomsel', 'supplier_id' => 1 ],
+            ['nama' => 'indosat', 'supplier_id' => 2 ],
+            ['nama' => 'three', 'supplier_id' => 3 ],
         ];
     
         foreach ($data as $value)
             {
                 Kartu::insert([
                     'nama' => $value['nama'],
+                    'supplier_id' => $value['supplier_id'],
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now()
                 ]);

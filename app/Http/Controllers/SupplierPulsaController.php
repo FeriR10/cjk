@@ -13,7 +13,15 @@ class SupplierPulsaController extends Controller
 {
     public function index()
     {
-        $data_supplier_pulsa = SupplierPulsa::with(['supplier', 'kartu'])->get();
+        // $data_supplier_pulsa = SupplierPulsa::with(['supplier', 'kartu'])->where('supplier_id', auth()->user()->supplier_id)->get();
+        
+        if (auth()->user()->role_id != 2) {
+            $data_supplier_pulsa = SupplierPulsa::with(['supplier', 'kartu'])->get();
+        } 
+        if (auth()->user()->role_id == 2) {
+            $data_supplier_pulsa = SupplierPulsa::with(['supplier', 'kartu'])->where('supplier_id', auth()->user()->supplier_id)->get();
+        }
+
         return view('supplier-pulsa.index', [
             'data_supplier_pulsa' => $data_supplier_pulsa
         ]);
@@ -21,9 +29,9 @@ class SupplierPulsaController extends Controller
 
     public function add()
     {
-        $data_supplier = Supplier::all();
+        $data_supplier = Supplier::find(auth()->user()->supplier_id);
         $data_pulsa = Pulsa::all();
-        $data_kartu = Kartu::all();
+        $data_kartu = Kartu::find(auth()->user()->supplier_id);
         return view('supplier-pulsa.add', [
             'data_supplier' => $data_supplier,
             'data_pulsa' => $data_pulsa,
@@ -39,7 +47,8 @@ class SupplierPulsaController extends Controller
             'supplier_id' => 'required',
             'pulsa_id' => 'required',
             'kartu_id' => 'required',
-            'harga_jual' => 'required',
+            'harga_awal' => 'required',
+            'switching' => 'required',
         ]);
 
         $supplier_pulsa = new SupplierPulsa;
@@ -47,7 +56,10 @@ class SupplierPulsaController extends Controller
         $supplier_pulsa->pulsa_id = $request->pulsa_id;
         $supplier_pulsa->nominal = $pulsa->nominal;
         $supplier_pulsa->kartu_id = $request->kartu_id;
-        $supplier_pulsa->harga_jual = $request->harga_jual;
+        $supplier_pulsa->harga_awal = $request->harga_awal;
+        $supplier_pulsa->switching = $request->switching;
+        $supplier_pulsa->harga_jual = $request->harga_awal + $request->switching;
+        // dd($supplier_pulsa);
         $supplier_pulsa->save();
 
         Session::flash('status', 'success');
@@ -72,12 +84,14 @@ class SupplierPulsaController extends Controller
         ]);
 
         $supplier_pulsa = SupplierPulsa::with(['supplier', 'kartu'])->find($id);
-        $supplier_pulsa->harga_jual = $request->harga_jual;
+        $supplier_pulsa->harga_awal = $request->harga_awal;
+        $supplier_pulsa->switching = $request->switching;
+        $supplier_pulsa->harga_jual = $request->harga_awal + $request->switching;
         // dd($supplier_pulsa);
         $supplier_pulsa->save();
 
         Session::flash('status', 'success');
-        Session::flash('message', 'Update harga jual sukses');
+        Session::flash('message', 'Update data sukses');
         return redirect('/supplier-pulsa');
     }
 }

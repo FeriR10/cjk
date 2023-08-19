@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kartu;
+use App\Models\Supplier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -18,17 +19,24 @@ class KartuController extends Controller
 
     public function add()
     {
-        return view('kartu.add');
+        $data_supplier = Supplier::get();
+        return view('kartu.add', [
+            'data_supplier' => $data_supplier
+        ]);
     }
 
     public function create(Request $request)
     {
         $validated = $request->validate([
-            'nama' => 'required'
+            'supplier_id' => 'required'
         ]);
 
+        $data_supplier = Supplier::find($request->supplier_id);
+
         $kartu = new Kartu;
-        $kartu->nama = $request->nama;
+        $kartu->nama = $data_supplier->nama;
+        $kartu->supplier_id = $request->supplier_id;
+        // dd($kartu);
         $kartu->save();
 
         Session::flash('status', 'success');

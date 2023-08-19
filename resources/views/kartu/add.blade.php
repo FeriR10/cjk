@@ -43,7 +43,12 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label>Nama</label>
-                            <input type="text" name="nama" class="form-control" placeholder="Enter Nama" value="{{ old('nama') }}">
+                            <select name="supplier_id" id="" class="form-control">
+                                @foreach ($data_supplier as $supplier)
+                                    <option value="{{ $supplier->id }}">{{ $supplier->nama }}</option>
+                                @endforeach
+                            </select>
+                            {{-- <input type="text" name="nama" class="form-control" placeholder="Enter Nama" value="{{ old('nama') }}"> --}}
                             @if($errors->has('nama'))
                             <span class="help-block" style="color: red">{{ $errors->first('nama') }}</span>
                             @endif
