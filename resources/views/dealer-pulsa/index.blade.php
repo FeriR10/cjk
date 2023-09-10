@@ -31,7 +31,7 @@
                 <h3 class="card-title">Dealer Pulsa Data</h3>
                 <div class="card-tools">
                     @if (auth()->user()->role_id == 3)
-                    <a href="/dealer-pulsa/add" class="btn btn-primary">Tambah Data</a>
+                    <a href="/dealer-pulsa/add" class="btn btn-primary">Beli Pulsa</a>
                     @endif
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
                         title="Collapse">
@@ -50,14 +50,14 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Dealer</th>
+                            <th>Supplier</th>
                             <th>Kartu</th>
                             <th>Nominal</th>
+                            <th>Harga Beli</th>
                             <th>Switching</th>
                             <th>Harga Jual</th>
                             <th>Jumlah Transaksi</th>
                             <th>Total Saldo</th>
-                            <th>Harga Beli</th>
                             <th>Option</th>
                         </tr>
                     </thead>
@@ -65,14 +65,14 @@
                         @foreach($data_dealer_pulsa as $dealer_pulsa)
                         <tr>
                             <td>{{ $dealer_pulsa->id }}</td>
-                            <td>{{ $dealer_pulsa->dealer->nama }}</td>
+                            <td>{{ $dealer_pulsa->supplier->nama }}</td>
                             <td>{{ $dealer_pulsa->kartu->nama }}</td>
                             <td>{{ $dealer_pulsa->nominal }}</td>
+                            <td>Rp. {{ $dealer_pulsa->harga_beli }}</td>
                             <td>Rp. {{ $dealer_pulsa->switching }}</td>
                             <td>Rp. {{ $dealer_pulsa->harga_jual }}</td>
                             <td>{{ $dealer_pulsa->jumlah_transaksi }}</td>
-                            <td>Rp. {{ $dealer_pulsa->total_saldo }}</td>
-                            <td>Rp. {{ $dealer_pulsa->harga_beli }}</td>
+                            <td>{{ $dealer_pulsa->total_saldo }}</td>
                             <td>
                                 @if (auth()->user()->role_id == 3)
                                 <a class="btn btn-info btn-sm" href="/dealer-pulsa/{{ $dealer_pulsa->id }}/tambah-saldo">Tambah Saldo</a>
@@ -89,14 +89,14 @@
                     <tfoot>
                         <tr>
                             <th>ID</th>
-                            <th>Dealer</th>
+                            <th>Supplier</th>
                             <th>Kartu</th>
                             <th>Nominal</th>
+                            <th>Harga Beli</th>
                             <th>Switching</th>
                             <th>Harga Jual</th>
                             <th>Jumlah Transaksi</th>
                             <th>Total Saldo</th>
-                            <th>Harga Beli</th>
                             <th>Option</th>
                         </tr>
                     </tfoot>

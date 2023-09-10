@@ -42,11 +42,11 @@ class SupplierPulsaController extends Controller
     public function create(Request $request)
     {
         $pulsa = Pulsa::find($request->pulsa_id);
+        $kartu = Kartu::find($request->kartu_id);
+        // dd($kartu->id);
 
         $validated = $request->validate([
-            'supplier_id' => 'required',
             'pulsa_id' => 'required',
-            'kartu_id' => 'required',
             'harga_awal' => 'required',
             'switching' => 'required',
         ]);
@@ -55,7 +55,7 @@ class SupplierPulsaController extends Controller
         $supplier_pulsa->supplier_id = auth()->user()->supplier_id;
         $supplier_pulsa->pulsa_id = $request->pulsa_id;
         $supplier_pulsa->nominal = $pulsa->nominal;
-        $supplier_pulsa->kartu_id = $request->kartu_id;
+        $supplier_pulsa->kartu_id = $kartu->id;
         $supplier_pulsa->harga_awal = $request->harga_awal;
         $supplier_pulsa->switching = $request->switching;
         $supplier_pulsa->harga_jual = $request->harga_awal + $request->switching;
@@ -80,7 +80,8 @@ class SupplierPulsaController extends Controller
         $pulsa = Pulsa::find($request->pulsa_id);
 
         $validated = $request->validate([
-            'harga_jual' => 'required',
+            'harga_awal' => 'required',
+            'switching' => 'required',
         ]);
 
         $supplier_pulsa = SupplierPulsa::with(['supplier', 'kartu'])->find($id);

@@ -22,6 +22,16 @@
         </div><!-- /.container-fluid -->
     </section>
 
+    <div class="container">
+
+        @if (Session::has('status'))
+        <div class="alert alert-success" role="alert">
+            <button type="button" class="btn btn-success close" data-dismiss="alert" sty>&times;</button>
+            {{Session::get('message')}}
+        </div>
+        @endif
+    </div>
+
     <!-- Main content -->
     <section class="content">
         @if ( auth()->user()->role_id == 1)
@@ -31,7 +41,7 @@
                 <!-- small box -->
                 <div class="small-box bg-info">
                     <div class="inner">
-                        <h3>Rp. {{ $total_keuntungan_supplier }} </h3>
+                        <h3>Rp. {{ $total_keuntungan_sp }} </h3>
 
                         <p>Total Keuntungan Penjualan Supplier Pulsa</p>
                     </div>
@@ -41,13 +51,28 @@
                     <a href="/penjualan-supplier-pulsa" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
+            <!-- ./col -->
+            <div class="col-md-6">
+                <!-- small box -->
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h3>Rp. {{ $total_keuntungan_skp }} </h3>
+
+                        <p>Total Keuntungan Penjualan Supplier Kartu Perdana</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-ios-book-outline"></i>
+                    </div>
+                    <a href="/penjualan-supplier-kartu-perdana" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
         </div>
         <div class="row">
             <div class="col-md-6">
                 <!-- small box -->
                 <div class="small-box bg-info">
                     <div class="inner">
-                        <h3>Rp. {{ $total_keuntungan_dealer }} </h3>
+                        <h3>Rp. {{ $total_keuntungan_dp }} </h3>
 
                         <p>Total Keuntungan Penjualan Dealer Pulsa</p>
                     </div>
@@ -57,6 +82,20 @@
                     <a href="/penjualan-dealer-pulsa" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
+            <div class="col-md-6">
+                <!-- small box -->
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h3>Rp. {{ $total_keuntungan_dkp }} </h3>
+
+                        <p>Total Keuntungan Penjualan Dealer Kartu Perdana</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-ios-book-outline"></i>
+                    </div>
+                    <a href="/penjualan-dealer-kartu-perdana" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
         </div>
         <div class="row">
             <!-- ./col -->
@@ -64,7 +103,7 @@
                 <!-- small box -->
                 <div class="small-box bg-info">
                     <div class="inner">
-                        <h3>Rp. {{ $total_keuntungan_biller }} </h3>
+                        <h3>Rp. {{ $total_keuntungan_bp }} </h3>
 
                         <p>Total Keuntungan Penjualan Biller Pulsa</p>
                     </div>
@@ -72,6 +111,21 @@
                         <i class="ion ion-ios-book-outline"></i>
                     </div>
                     <a href="/penjualan-biller-pulsa" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-md-6">
+                <!-- small box -->
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h3>Rp. {{ $total_keuntungan_bkp }} </h3>
+
+                        <p>Total Keuntungan Penjualan Biller Kartu Perdana</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-ios-book-outline"></i>
+                    </div>
+                    <a href="/penjualan-biller-kartu-perdana" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
         </div>
@@ -82,7 +136,7 @@
                 <!-- small box -->
                 <div class="small-box bg-info">
                     <div class="inner">
-                        <h3>Rp. {{ $total_keuntungan_supplier }} </h3>
+                        <h3>Rp. {{ $total_keuntungan_sp }} </h3>
 
                         <p>Total Keuntungan Penjualan Supplier Pulsa</p>
                     </div>
@@ -90,6 +144,20 @@
                         <i class="ion ion-ios-book-outline"></i>
                     </div>
                     <a href="/penjualan-supplier-pulsa" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <!-- small box -->
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h3>Rp. {{ $total_keuntungan_skp }} </h3>
+
+                        <p>Total Keuntungan Penjualan Supplier Kartu Perdana</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-ios-book-outline"></i>
+                    </div>
+                    <a href="/penjualan-supplier-kartu-perdana" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
         </div>
@@ -100,7 +168,7 @@
                 <!-- small box -->
                 <div class="small-box bg-info">
                     <div class="inner">
-                        <h3>Rp. {{ $total_keuntungan_dealer }} </h3>
+                        <h3>Rp. {{ $total_keuntungan_dp }} </h3>
 
                         <p>Total Keuntungan Penjualan Dealer Pulsa</p>
                     </div>
@@ -108,6 +176,20 @@
                         <i class="ion ion-ios-book-outline"></i>
                     </div>
                     <a href="/penjualan-dealer-pulsa" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <!-- small box -->
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h3>Rp. {{ $total_keuntungan_dkp }} </h3>
+
+                        <p>Total Keuntungan Penjualan Dealer Kartu Perdana</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-ios-book-outline"></i>
+                    </div>
+                    <a href="/penjualan-dealer-kartu-perdana" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
         </div>
@@ -119,7 +201,7 @@
                 <!-- small box -->
                 <div class="small-box bg-info">
                     <div class="inner">
-                        <h3>Rp. {{ $total_keuntungan_biller }} </h3>
+                        <h3>Rp. {{ $total_keuntungan_bp }} </h3>
 
                         <p>Total Keuntungan Penjualan Biller Pulsa</p>
                     </div>
@@ -127,6 +209,21 @@
                         <i class="ion ion-ios-book-outline"></i>
                     </div>
                     <a href="/penjualan-biller-pulsa" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-md-6">
+                <!-- small box -->
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h3>Rp. {{ $total_keuntungan_bkp }} </h3>
+
+                        <p>Total Keuntungan Penjualan Biller Kartu Perdana</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-ios-book-outline"></i>
+                    </div>
+                    <a href="/penjualan-biller-kartu-perdana" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
         </div>

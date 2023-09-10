@@ -42,7 +42,7 @@
                     {{ csrf_field() }}
                     <div class="card-body">
                         <div class="form-group">
-                            <label>Nominal</label>
+                            <label>Keterangan</label>
                             <select name="supplier_pulsa_id" id="" class="form-control">
                                 {{-- <option value="">Pilih Supplier</option> --}}
                                 @foreach ($data_supplier_pulsa as $supplier_pulsa)

@@ -27,6 +27,26 @@ class PenjualanDealerPulsa extends Model
      *
      * @return BelongsTo
      */
+    public function dealer(): BelongsTo
+    {
+        return $this->belongsTo(Dealer::class, 'dealer_id', 'id');
+    }
+    
+    /**
+     * Get the supplier_pulsa that owns the DealerPulsa
+     *
+     * @return BelongsTo
+     */
+    public function biller(): BelongsTo
+    {
+        return $this->belongsTo(Biller::class, 'biller_id', 'id');
+    }
+    
+    /**
+     * Get the supplier_pulsa that owns the DealerPulsa
+     *
+     * @return BelongsTo
+     */
     public function pulsa(): BelongsTo
     {
         return $this->belongsTo(Pulsa::class, 'pulsa_id', 'id');

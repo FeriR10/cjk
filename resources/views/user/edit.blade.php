@@ -48,6 +48,11 @@
                             @if($errors->has('name'))
                             <span class="help-block" style="color: red">{{ $errors->first('name') }}</span>
                             @endif
+                            <label>Email</label>
+                            <input type="email" name="email" class="form-control" value="{{ $user->email }}">
+                            @if($errors->has('email'))
+                            <span class="help-block" style="color: red">{{ $errors->first('email') }}</span>
+                            @endif
                         </div>
                     </div>
                     <!-- /.card-body -->

@@ -47,7 +47,7 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Dealer</th>
+                            <th>Biller</th>
                             <th>Kartu</th>
                             <th>Nominal</th>
                             <th>Harga Jual</th>
@@ -63,8 +63,8 @@
                         @foreach($data_penjualan as $penjualan)
                         <tr>
                             <td>{{ $penjualan->id }}</td>
-                            <td>{{ $penjualan->dealer_pulsa->dealer->nama }}</td>
-                            <td>{{ $penjualan->dealer_pulsa->kartu->nama }}</td>
+                            <td>{{ $penjualan->biller->nama }}</td>
+                            <td>{{ $penjualan->kartu->nama }}</td>
                             <td>{{ $penjualan->nominal }}</td>
                             <td>Rp. {{ $penjualan->harga_jual }}</td>
                             <td>{{ $penjualan->jumlah_transaksi }}</td>
@@ -86,7 +86,7 @@
                     <tfoot>
                         <tr>
                             <th>ID</th>
-                            <th>Dealer</th>
+                            <th>Biller</th>
                             <th>Kartu</th>
                             <th>Nominal</th>
                             <th>Harga Jual</th>

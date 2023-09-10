@@ -50,8 +50,6 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Biller</th>
-                            <th>Dealer</th>
                             <th>Kartu</th>
                             <th>Nominal</th>
                             <th>No Konsumen</th>
@@ -66,8 +64,6 @@
                         @foreach($data_penjualan as $penjualan)
                         <tr>
                             <td>{{ $penjualan->id }}</td>
-                            <td>{{ $penjualan->biller->nama }}</td>
-                            <td>{{ $penjualan->biller_pulsa->dealer_pulsa->dealer->nama }}</td>
                             <td>{{ $penjualan->kartu->nama }}</td>
                             <td>{{ $penjualan->nominal }}</td>
                             <td>{{ $penjualan->no_konsumen }}</td>
@@ -77,7 +73,7 @@
                             <td>Rp. {{ $penjualan->keuntungan }}</td>
                             <td>
                                 @if (auth()->user()->role_id == 4)
-                                <a class="btn btn-warning btn-sm" href="/penjualan/{{ $penjualan->id }}/edit">Edit</a>
+                                {{-- <a class="btn btn-warning btn-sm" href="/penjualan/{{ $penjualan->id }}/edit">Edit</a> --}}
                                 {{-- <a class="btn btn-danger btn-sm" href="/penjualan/{{ $penjualan->id }}/delete"
                                 onClick="return confirm('Anda Yakin ?')">Delete</a> --}}
                                 @else
@@ -90,8 +86,6 @@
                     <tfoot>
                         <tr>
                             <th>ID</th>
-                            <th>Biller</th>
-                            <th>Dealer</th>
                             <th>Kartu</th>
                             <th>Nominal</th>
                             <th>No Konsumen</th>

@@ -46,26 +46,29 @@ class PenjualanBillerPulsaController extends Controller
 
     public function create(Request $request)
     {
-        $pulsa = BillerPulsa::find($request->biller_pulsa_id);
+        $biller_pulsa = BillerPulsa::find($request->biller_pulsa_id);
         // dd($pulsa);
 
         $validated = $request->validate([
             'biller_pulsa_id' => 'required',
+            'no_konsumen' => 'required',
         ]);
 
-        
         // add data to penjualan_biller_pulsa_table
         $penjualan = new PenjualanBillerPulsa;
         $penjualan->biller_id = auth()->user()->biller_id;
         $penjualan->biller_pulsa_id = $request->biller_pulsa_id;
-        $penjualan->pulsa_id = $pulsa->pulsa_id;
+        $penjualan->kartu_id = $biller_pulsa->kartu_id;
+        $penjualan->pulsa_id = $biller_pulsa->pulsa_id;
+        $penjualan->nominal = $biller_pulsa->nominal;
         $penjualan->no_konsumen = $request->no_konsumen;
-        $penjualan->kartu_id = $pulsa->kartu_id;
-        $penjualan->nominal = $pulsa->nominal;
-        $penjualan->harga_jual = $pulsa->harga_jual;
+        $penjualan->harga_beli = $biller_pulsa->harga_beli;
+        $penjualan->switching = $biller_pulsa->switching;
+        $penjualan->harga_jual = $biller_pulsa->harga_jual;
         $penjualan->jumlah_transaksi = 1;
-        $penjualan->harga_beli = $pulsa->harga_beli;
-        $penjualan->keuntungan = $penjualan->harga_jual - $penjualan->harga_beli;
+        $penjualan->total_harga_beli = $penjualan->harga_beli * $penjualan->jumlah_transaksi;
+        $penjualan->total_harga_jual = $penjualan->harga_jual * $penjualan->jumlah_transaksi;
+        $penjualan->keuntungan = $penjualan->total_harga_jual - $penjualan->total_harga_beli;
         // dd($penjualan);
         $penjualan->save();
         

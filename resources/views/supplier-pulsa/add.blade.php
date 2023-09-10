@@ -56,6 +56,7 @@
                         </div>
                         <div class="form-group">
                             <label>Kartu</label>
+                            <input type="hidden" name="kartu_id" class="form-control" value="{{ $data_kartu->id }}">
                             <input type="text" class="form-control" value="{{ $data_kartu->nama }}" readonly>
                         </div>
                         <div class="form-group">

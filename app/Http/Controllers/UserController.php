@@ -56,12 +56,15 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
+        $user = User::find($id);
         $validated = $request->validate([
             'name' => 'required',
+            'email' => 'required|string|email|max:255|unique:users,email,'.$user->id,
         ]);
 
         $user = User::find($id);
         $user->name = $request->name;
+        $user->email = $request->email;
         $user->save();
 
         Session::flash('status', 'success');

@@ -21,6 +21,16 @@ class PenjualanSupplierPulsa extends Model
     {
         return $this->belongsTo(Supplier::class, 'supplier_id', 'id');
     }
+    
+    /**
+     * Get the supplier that owns the PenjualanSupplierPulsa
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function dealer(): BelongsTo
+    {
+        return $this->belongsTo(Dealer::class, 'dealer_id', 'id');
+    }
 
     /**
      * Get the dealer that owns the DealerPulsa

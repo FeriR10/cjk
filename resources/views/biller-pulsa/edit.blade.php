@@ -29,7 +29,7 @@
         <!-- Default box -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Tambah Saldo Biller Pulsa</h3>
+                <h3 class="card-title">Edit Switch Biller Pulsa</h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
                         title="Collapse">
@@ -51,7 +51,7 @@
                         </div>
                         <div class="form-group">
                             <label>Switching</label>
-                            <input type="text" name="switching" class="form-control" placeholder="Enter Jumlah Transaksi" value="{{ $data_biller_pulsa->switching }}">
+                            <input type="number" min="1" name="switching" class="form-control" value="{{ $data_biller_pulsa->switching }}">
                             @if($errors->has('switching'))
                             <span class="help-block" style="color: red">{{ $errors->first('switching') }}</span>
                             @endif

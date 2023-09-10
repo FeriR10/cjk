@@ -14,14 +14,14 @@ class PenjualanSupplierPulsaController extends Controller
             $total_keuntungan = PenjualanSupplierPulsa::sum('keuntungan');
         } 
         if (auth()->user()->role_id == 2) {
-            $total_keuntungan = PenjualanSupplierPulsa::with(['supplier', 'supplier_pulsa', 'pulsa', 'kartu'])->where('supplier_id', auth()->user()->supplier_id)->sum('keuntungan');
+            $total_keuntungan = PenjualanSupplierPulsa::with(['supplier', 'dealer', 'supplier_pulsa', 'pulsa', 'kartu'])->where('supplier_id', auth()->user()->supplier_id)->sum('keuntungan');
         }
         // $data_penjualan = PenjualanDealerPulsa::with(['dealer_pulsa', 'pulsa', 'kartu'])->get();
         if (auth()->user()->role_id != 2) {
-            $data_penjualan = PenjualanSupplierPulsa::with(['supplier', 'supplier_pulsa', 'pulsa', 'kartu'])->get();
+            $data_penjualan = PenjualanSupplierPulsa::with(['supplier', 'dealer', 'supplier_pulsa', 'pulsa', 'kartu'])->get();
         } 
         if (auth()->user()->role_id == 2) {
-            $data_penjualan = PenjualanSupplierPulsa::with(['supplier', 'supplier_pulsa', 'pulsa', 'kartu'])->where('supplier_id', auth()->user()->supplier_id)->get();
+            $data_penjualan = PenjualanSupplierPulsa::with(['supplier', 'dealer', 'supplier_pulsa', 'pulsa', 'kartu'])->where('supplier_id', auth()->user()->supplier_id)->get();
         }
         return view('penjualan-supplier-pulsa.index', [
             'data_penjualan' => $data_penjualan,

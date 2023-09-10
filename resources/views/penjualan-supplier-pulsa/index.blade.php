@@ -47,7 +47,7 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Supplier</th>
+                            <th>Dealer</th>
                             <th>Kartu</th>
                             <th>Nominal</th>
                             <th>Harga Jual</th>
@@ -63,7 +63,7 @@
                         @foreach($data_penjualan as $penjualan)
                         <tr>
                             <td>{{ $penjualan->id }}</td>
-                            <td>{{ $penjualan->supplier->nama }}</td>
+                            <td>{{ $penjualan->dealer->nama }}</td>
                             <td>{{ $penjualan->kartu->nama }}</td>
                             <td>{{ $penjualan->nominal }}</td>
                             <td>Rp. {{ $penjualan->harga_jual }}</td>
@@ -86,7 +86,7 @@
                     <tfoot>
                         <tr>
                             <th>ID</th>
-                            <th>Supplier</th>
+                            <th>Dealer</th>
                             <th>Kartu</th>
                             <th>Nominal</th>
                             <th>Harga Jual</th>

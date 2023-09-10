@@ -42,8 +42,8 @@
                     {{ csrf_field() }}
                     <div class="card-body">
                         <div class="form-group">
-                            <label>Nominal</label>
-                            <input type="text" name="switching" class="form-control" placeholder="Enter Jumlah Switching" value="Kartu {{ $data_biller_pulsa->kartu->nama }} | Nominal {{ $data_biller_pulsa->nominal }} | Maks Jumlah Transaksi {{ $data_dealer_pulsa->jumlah_transaksi }}" readonly>
+                            <label>Keterangan</label>
+                            <input type="text" name="switching" class="form-control" placeholder="Enter Jumlah Switching" value="Kartu {{ $data_biller_pulsa->kartu->nama }} | Nominal {{ $data_biller_pulsa->nominal }} | Jumlah Transaksi {{ $data_biller_pulsa->jumlah_transaksi }}" readonly>
                             @if($errors->has('switching'))
                             <span class="help-block" style="color: red">{{ $errors->first('switching') }}</span>
                             @endif

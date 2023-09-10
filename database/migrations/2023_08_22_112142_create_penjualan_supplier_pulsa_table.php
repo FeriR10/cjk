@@ -13,21 +13,24 @@ return new class extends Migration
     {
         Schema::create('penjualan_supplier_pulsa', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('dealer_id');
+            $table->foreign('dealer_id')->references('id')->on('dealer');
             $table->unsignedBigInteger('supplier_id');
             $table->foreign('supplier_id')->references('id')->on('supplier');
-            $table->unsignedBigInteger('supplier_pulsa_id');
-            $table->foreign('supplier_pulsa_id')->references('id')->on('supplier_pulsa');
-            $table->unsignedBigInteger('pulsa_id');
-            $table->foreign('pulsa_id')->references('id')->on('pulsa');
+            $table->unsignedBigInteger('pembelian_dp_id');
+            $table->foreign('pembelian_dp_id')->references('id')->on('pembelian_dealer_pulsa');
             $table->unsignedBigInteger('kartu_id');
             $table->foreign('kartu_id')->references('id')->on('kartu');
+            $table->unsignedBigInteger('pulsa_id');
+            $table->foreign('pulsa_id')->references('id')->on('pulsa');
             $table->integer('nominal');
+            $table->integer('harga_beli');
+            $table->integer('switching');
             $table->integer('harga_jual');
             $table->integer('jumlah_transaksi');
-            $table->integer('harga_beli');
-            $table->integer('total_harga_jual');
             $table->integer('total_harga_beli');
-            $table->integer('keuntungan');
+            $table->integer('total_harga_jual');
+            $table->string('keuntungan');
             $table->timestamps();
         });
     }
