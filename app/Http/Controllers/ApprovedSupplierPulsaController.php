@@ -27,6 +27,24 @@ class ApprovedSupplierPulsaController extends Controller
         ]);
     }
 
+    public function filterDate(Request $request)
+    {
+        $tanggal = $request->tanggal;
+        // $data_pembelian = PembelianDealerKartuPerdana::with(['dealer_pulsa', 'pulsa', 'kartu'])->get();
+        if (auth()->user()->role_id != 2) {
+            $data_pembelian = PembelianDealerPulsa::with(['dealer', 'kartu'])
+            ->whereDate('created_at', $tanggal)->get();
+        }
+        if (auth()->user()->role_id == 2) {
+            $data_pembelian = PembelianDealerPulsa::with(['dealer', 'kartu'])
+            ->where('supplier_id', auth()->user()->supplier_id)
+            ->whereDate('created_at', $tanggal)->get();
+        }
+        return view('approved-supplier-pulsa.index', [
+            'data_pembelian' => $data_pembelian,
+        ]);
+    }
+
     public function approved($id)
     {
         $pembelian = PembelianDealerPulsa::find($id);

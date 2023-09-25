@@ -19,6 +19,17 @@
                     </ol>
                 </div>
             </div>
+            <div class="row">
+                <div class="col">
+                    <form class="form-inline" action="/penjualan-dealer-kartu-perdana/filter-date">
+                        @csrf
+                        <label for="" class="mr-1">Tanggal :</label>
+                        <input type="date" class="form-control mr-1" name="tanggal">
+                        <button type="submit" class="btn btn-success ml-1">Cari Data</button>
+                        <a href="/penjualan-dealer-kartu-perdana" class="btn btn-warning ml-1">Refresh Data</a>
+                    </form>
+                </div>
+            </div>
         </div><!-- /.container-fluid -->
     </section>
 
@@ -28,8 +39,11 @@
         <!-- Default box -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Penjualan Dealer Kartu Perdana <strong></strong></h3>
+                <h3 class="card-title">Total Keuntungan Penjualan Dealer Kartu Perdana <strong> Rp. {{ $total_keuntungan }}</strong></h3>
                 <div class="card-tools">
+                    @if (auth()->user()->role_id == 1 || auth()->user()->role_id == 3)
+                    <a href="/penjualan-dealer-kartu-perdana/export-pdf" class="btn btn-primary">Export PDF</a>
+                    @endif
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
                         title="Collapse">
                         <i class="fas fa-minus"></i>
@@ -43,12 +57,12 @@
                     {{Session::get('message')}}
                 </div>
                 @endif
-                <table id="example1" class="table table-bordered table-striped">
+                <table id="example1" class="table table-bordered table-striped" style="text-align: center">
                     <thead>
                         <tr>
                             <th>ID</th>
+                            <th>Dealer</th>
                             <th>Biller</th>
-                            {{-- <th>ID Pembelian</th> --}}
                             <th>Kartu</th>
                             <th>Harga Beli</th>
                             <th>Switching</th>
@@ -57,6 +71,7 @@
                             <th>Total Harga Jual</th>
                             <th>Total Harga Beli</th>
                             <th>Keuntungan</th>
+                            <th>Tanggal</th>
                             <th>Option</th>
                         </tr>
                     </thead>
@@ -64,8 +79,8 @@
                         @foreach($data_penjualan as $penjualan)
                         <tr>
                             <td>{{ $penjualan->id }}</td>
+                            <td>{{ $penjualan->dealer->nama }}</td>
                             <td>{{ $penjualan->biller->nama }}</td>
-                            {{-- <td>{{ $penjualan->pembelian_bkp_id }}</td> --}}
                             <td>{{ $penjualan->kartu->nama }}</td>
                             <td>Rp. {{ $penjualan->harga_beli }}</td>
                             <td>Rp. {{ $penjualan->switching }}</td>
@@ -74,6 +89,7 @@
                             <td>Rp. {{ $penjualan->total_harga_jual }}</td>
                             <td>Rp. {{ $penjualan->total_harga_beli }}</td>
                             <td>Rp. {{ $penjualan->keuntungan }}</td>
+                            <td>Rp. {{ $penjualan->created_at->format('Y-m-d') }}</td>
                             <td>
                                 @if (auth()->user()->role_id == 2)
                                 {{-- <a class="btn btn-danger btn-sm" href="/pembelian/{{ $pembelian->id }}/delete"
@@ -88,8 +104,8 @@
                     <tfoot>
                         <tr>
                             <th>ID</th>
+                            <th>Dealer</th>
                             <th>Biller</th>
-                            {{-- <th>ID Pembelian</th> --}}
                             <th>Kartu</th>
                             <th>Harga Beli</th>
                             <th>Switching</th>
@@ -98,6 +114,7 @@
                             <th>Total Harga Jual</th>
                             <th>Total Harga Beli</th>
                             <th>Keuntungan</th>
+                            <th>Tanggal</th>
                             <th>Option</th>
                         </tr>
                     </tfoot>

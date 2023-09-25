@@ -19,7 +19,7 @@ class PenjualanDealerKartuPerdana extends Model
      */
     public function dealer(): BelongsTo
     {
-        return $this->belongsTo(Dealer::class, 'supplier_id', 'id');
+        return $this->belongsTo(Dealer::class, 'dealer_id', 'id');
     }
     
     /**

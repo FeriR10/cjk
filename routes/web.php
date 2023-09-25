@@ -118,26 +118,32 @@ Route::group(['middleware' => 'auth'], function(){
     
     // Penjualan Supplier Pulsa
     Route::get('/penjualan-supplier-pulsa', [PenjualanSupplierPulsaController::class, 'index']);
+    Route::get('/penjualan-supplier-pulsa/filter-date', [PenjualanSupplierPulsaController::class, 'filterDate']);
     Route::get('/penjualan-supplier-pulsa/add', [PenjualanSupplierPulsaController::class, 'add']);
     Route::post('/penjualan-supplier-pulsa/create', [PenjualanSupplierPulsaController::class, 'create']);
+    Route::get('/penjualan-supplier-pulsa/export-pdf', [PenjualanSupplierPulsaController::class, 'exportPdf']);
     Route::get('/penjualan-supplier-pulsa/{id}/edit', [PenjualanSupplierPulsaController::class, 'edit']);
     Route::put('/penjualan-supplier-pulsa/{id}/update', [PenjualanSupplierPulsaController::class, 'update']);
     Route::put('/penjualan-supplier-pulsa/{id}/delete', [PenjualanSupplierPulsaController::class, 'delete']);
     
     // Penjualan Supplier Kartu Perdana
     Route::get('/penjualan-supplier-kartu-perdana', [PenjualanSupplierKartuPerdanaController::class, 'index']);
+    Route::get('/penjualan-supplier-kartu-perdana/filter-date', [PenjualanSupplierKartuPerdanaController::class, 'filterDate']);
     Route::get('/penjualan-supplier-kartu-perdana/add', [PenjualanSupplierKartuPerdanaController::class, 'add']);
     Route::post('/penjualan-supplier-kartu-perdana/create', [PenjualanSupplierKartuPerdanaController::class, 'create']);
+    Route::get('/penjualan-supplier-kartu-perdana/export-pdf', [PenjualanSupplierKartuPerdanaController::class, 'exportPdf']);
     Route::get('/penjualan-supplier-kartu-perdana/{id}/edit', [PenjualanSupplierKartuPerdanaController::class, 'edit']);
     Route::put('/penjualan-supplier-kartu-perdana/{id}/update', [PenjualanSupplierKartuPerdanaController::class, 'update']);
     Route::put('/penjualan-supplier-kartu-perdana/{id}/delete', [PenjualanSupplierKartuPerdanaController::class, 'delete']);
     
     // Approved Supplier Pulsa
     Route::get('/approved-supplier-pulsa', [ApprovedSupplierPulsaController::class, 'index']);
+    Route::get('/approved-supplier-pulsa/filter-date', [ApprovedSupplierPulsaController::class, 'filterDate']);
     Route::get('/approved-supplier-pulsa/{id}/approved', [ApprovedSupplierPulsaController::class, 'approved']);
     
     // Approved Supplier Kartu Perdana
     Route::get('/approved-supplier-kartu-perdana', [ApprovedSupplierKartuPerdanaController::class, 'index']);
+    Route::get('/approved-supplier-kartu-perdana/filter-date', [ApprovedSupplierKartuPerdanaController::class, 'filterDate']);
     Route::get('/approved-supplier-kartu-perdana/{id}/approved', [ApprovedSupplierKartuPerdanaController::class, 'approved']);
 
     // Dealer
@@ -170,42 +176,52 @@ Route::group(['middleware' => 'auth'], function(){
 
     // Pembelian Dealer Pulsa
     Route::get('/pembelian-dealer-pulsa', [PembelianDealerPulsaController::class, 'index']);
+    Route::get('/pembelian-dealer-pulsa/filter-date', [PembelianDealerPulsaController::class, 'filterDate']);
     Route::get('/pembelian-dealer-pulsa/add', [PembelianDealerPulsaController::class, 'add']);
     Route::post('/pembelian-dealer-pulsa/create', [PembelianDealerPulsaController::class, 'create']);
+    Route::get('/pembelian-dealer-pulsa/export-pdf', [PembelianDealerPulsaController::class, 'exportPdf']);
     Route::get('/pembelian-dealer-pulsa/{id}/edit', [PembelianDealerPulsaController::class, 'edit']);
     Route::put('/pembelian-dealer-pulsa/{id}/update', [PembelianDealerPulsaController::class, 'update']);
     Route::put('/pembelian-dealer-pulsa/{id}/delete', [PembelianDealerPulsaController::class, 'delete']);
     
     // Pembelian Dealer Kartu Perdana
     Route::get('/pembelian-dealer-kartu-perdana', [PembelianDealerKartuPerdanaController::class, 'index']);
+    Route::get('/pembelian-dealer-kartu-perdana/filter-date', [PembelianDealerKartuPerdanaController::class, 'filterDate']);
     Route::get('/pembelian-dealer-kartu-perdana/add', [PembelianDealerKartuPerdanaController::class, 'add']);
     Route::post('/pembelian-dealer-kartu-perdana/create', [PembelianDealerKartuPerdanaController::class, 'create']);
+    Route::get('/pembelian-dealer-kartu-perdana/export-pdf', [PembelianDealerKartuPerdanaController::class, 'exportPdf']);
     Route::get('/pembelian-dealer-kartu-perdana/{id}/edit', [PembelianDealerKartuPerdanaController::class, 'edit']);
     Route::put('/pembelian-dealer-kartu-perdana/{id}/update', [PembelianDealerKartuPerdanaController::class, 'update']);
     Route::put('/pembelian-dealer-kartu-perdana/{id}/delete', [PembelianDealerKartuPerdanaController::class, 'delete']);
     
     // Penjualan Dealer Pulsa
     Route::get('/penjualan-dealer-pulsa', [PenjualanDealerPulsaController::class, 'index']);
+    Route::get('/penjualan-dealer-pulsa/filter-date', [PenjualanDealerPulsaController::class, 'filterDate']);
     Route::get('/penjualan-dealer-pulsa/add', [PenjualanDealerPulsaController::class, 'add']);
     Route::post('/penjualan-dealer-pulsa/create', [PenjualanDealerPulsaController::class, 'create']);
+    Route::get('/penjualan-dealer-pulsa/export-pdf', [PenjualanDealerPulsaController::class, 'exportPdf']);
     Route::get('/penjualan-dealer-pulsa/{id}/edit', [PenjualanDealerPulsaController::class, 'edit']);
     Route::put('/penjualan-dealer-pulsa/{id}/update', [PenjualanDealerPulsaController::class, 'update']);
     Route::put('/penjualan-dealer-pulsa/{id}/delete', [PenjualanDealerPulsaController::class, 'delete']);
     
     // Penjualan Dealer Kartu Perdana
     Route::get('/penjualan-dealer-kartu-perdana', [PenjualanDealerKartuPerdanaController::class, 'index']);
+    Route::get('/penjualan-dealer-kartu-perdana/filter-date', [PenjualanDealerKartuPerdanaController::class, 'filterDate']);
     Route::get('/penjualan-dealer-kartu-perdana/add', [PenjualanDealerKartuPerdanaController::class, 'add']);
     Route::post('/penjualan-dealer-kartu-perdana/create', [PenjualanDealerKartuPerdanaController::class, 'create']);
+    Route::get('/penjualan-dealer-kartu-perdana/export-pdf', [PenjualanDealerKartuPerdanaController::class, 'exportPdf']);
     Route::get('/penjualan-dealer-kartu-perdana/{id}/edit', [PenjualanDealerKartuPerdanaController::class, 'edit']);
     Route::put('/penjualan-dealer-kartu-perdana/{id}/update', [PenjualanDealerKartuPerdanaController::class, 'update']);
     Route::put('/penjualan-dealer-kartu-perdana/{id}/delete', [PenjualanDealerKartuPerdanaController::class, 'delete']);
 
     // Approved Dealer Pulsa
     Route::get('/approved-dealer-pulsa', [ApprovedDealerPulsaController::class, 'index']);
+    Route::get('/approved-dealer-pulsa/filter-date', [ApprovedDealerPulsaController::class, 'filterDate']);
     Route::get('/approved-dealer-pulsa/{id}/approved', [ApprovedDealerPulsaController::class, 'approved']);
     
     // Approved Dealer Kartu Perdana
     Route::get('/approved-dealer-kartu-perdana', [ApprovedDealerKartuPerdanaController::class, 'index']);
+    Route::get('/approved-dealer-kartu-perdana/filter-date', [ApprovedDealerKartuPerdanaController::class, 'filterDate']);
     Route::get('/approved-dealer-kartu-perdana/{id}/approved', [ApprovedDealerKartuPerdanaController::class, 'approved']);
 
     // Biller
@@ -238,32 +254,40 @@ Route::group(['middleware' => 'auth'], function(){
     
     // Pembelian Biller Pulsa
     Route::get('/pembelian-biller-pulsa', [PembelianBillerPulsaController::class, 'index']);
+    Route::get('/pembelian-biller-pulsa/filter-date', [PembelianBillerPulsaController::class, 'filterDate']);
     Route::get('/pembelian-biller-pulsa/add', [PembelianBillerPulsaController::class, 'add']);
     Route::post('/pembelian-biller-pulsa/create', [PembelianBillerPulsaController::class, 'create']);
+    Route::get('/pembelian-biller-pulsa/export-pdf', [PembelianBillerPulsaController::class, 'exportPdf']);
     Route::get('/pembelian-biller-pulsa/{id}/edit', [PembelianBillerPulsaController::class, 'edit']);
     Route::put('/pembelian-biller-pulsa/{id}/update', [PembelianBillerPulsaController::class, 'update']);
     Route::put('/pembelian-biller-pulsa/{id}/delete', [PembelianBillerPulsaController::class, 'delete']);
     
     // Pembelian Biller Kartu Perdana
     Route::get('/pembelian-biller-kartu-perdana', [PembelianBillerKartuPerdanaController::class, 'index']);
+    Route::get('/pembelian-biller-kartu-perdana/filter-date', [PembelianBillerKartuPerdanaController::class, 'filterDate']);
     Route::get('/pembelian-biller-kartu-perdana/add', [PembelianBillerKartuPerdanaController::class, 'add']);
     Route::post('/pembelian-biller-kartu-perdana/create', [PembelianBillerKartuPerdanaController::class, 'create']);
+    Route::get('/pembelian-biller-kartu-perdana/export-pdf', [PembelianBillerKartuPerdanaController::class, 'exportPdf']);
     Route::get('/pembelian-biller-kartu-perdana/{id}/edit', [PembelianBillerKartuPerdanaController::class, 'edit']);
     Route::put('/pembelian-biller-kartu-perdana/{id}/update', [PembelianBillerKartuPerdanaController::class, 'update']);
     Route::put('/pembelian-biller-kartu-perdana/{id}/delete', [PembelianBillerKartuPerdanaController::class, 'delete']);
     
     // Penjualan Biller Pulsa
     Route::get('/penjualan-biller-pulsa', [PenjualanBillerPulsaController::class, 'index']);
+    Route::get('/penjualan-biller-pulsa/filter-date', [PenjualanBillerPulsaController::class, 'filterDate']);
     Route::get('/penjualan-biller-pulsa/add', [PenjualanBillerPulsaController::class, 'add']);
     Route::post('/penjualan-biller-pulsa/create', [PenjualanBillerPulsaController::class, 'create']);
+    Route::get('/penjualan-biller-pulsa/export-pdf', [PenjualanBillerPulsaController::class, 'exportPdf']);
     Route::get('/penjualan-biller-pulsa/{id}/edit', [PenjualanBillerPulsaController::class, 'edit']);
     Route::put('/penjualan-biller-pulsa/{id}/update', [PenjualanBillerPulsaController::class, 'update']);
     Route::put('/penjualan-biller-pulsa/{id}/delete', [PenjualanBillerPulsaController::class, 'delete']);
     
     // Penjualan Biller Kartu Perdana
     Route::get('/penjualan-biller-kartu-perdana', [PenjualanBillerKartuPerdanaController::class, 'index']);
+    Route::get('/penjualan-biller-kartu-perdana/filter-date', [PenjualanBillerKartuPerdanaController::class, 'filterDate']);
     Route::get('/penjualan-biller-kartu-perdana/add', [PenjualanBillerKartuPerdanaController::class, 'add']);
     Route::post('/penjualan-biller-kartu-perdana/create', [PenjualanBillerKartuPerdanaController::class, 'create']);
+    Route::get('/penjualan-biller-kartu-perdana/export-pdf', [PenjualanBillerKartuPerdanaController::class, 'exportPdf']);
     Route::get('/penjualan-biller-kartu-perdana/{id}/edit', [PenjualanBillerKartuPerdanaController::class, 'edit']);
     Route::put('/penjualan-biller-kartu-perdana/{id}/update', [PenjualanBillerKartuPerdanaController::class, 'update']);
     Route::put('/penjualan-biller-kartu-perdana/{id}/delete', [PenjualanBillerKartuPerdanaController::class, 'delete']);

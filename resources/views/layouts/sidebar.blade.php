@@ -196,15 +196,6 @@
                             </a>
                         </li>
                         @endif
-                        @if (auth()->user()->role_id == 4 || auth()->user()->role_id == 1)
-                        <li class="nav-item">
-                            <a href="/approved-biller-pulsa"
-                                class="nav-link {{ request()->is('approved-biller-pulsa') ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-th"></i>
-                                <p>Penjualan Biller</p>
-                            </a>
-                        </li>
-                        @endif
                     </ul>
                 </li>
                 <li class="nav-header">Approved Kartu Perdana</li>
@@ -235,15 +226,6 @@
                             </a>
                         </li>
                         @endif
-                        @if (auth()->user()->role_id == 4 || auth()->user()->role_id == 1)
-                        <li class="nav-item">
-                            <a href="/penjualan-biller-pulsa"
-                                class="nav-link {{ request()->is('penjualan-biller-pulsa') ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-th"></i>
-                                <p>Penjualan Biller</p>
-                            </a>
-                        </li>
-                        @endif
                     </ul>
                 </li>
                 <li class="nav-header">Transaksi Pulsa</li>
@@ -269,7 +251,7 @@
                         @if (auth()->user()->role_id == 3 || auth()->user()->role_id == 1)
                         <li class="nav-item">
                             <a href="/pembelian-dealer-pulsa"
-                                class="nav-link {{ request()->is('pembelian-dealer-pulsa') ? 'active' : '' }}">
+                                class="nav-link {{ request()->is('pembelian-dealer-pulsa', 'pembelian-dealer-pulsa') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>Pembelian Dealer</p>
                             </a>

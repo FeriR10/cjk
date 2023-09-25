@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pulsa;
 use App\Models\BillerPulsa;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\PenjualanBillerPulsa;
 use Illuminate\Support\Facades\Session;
 
@@ -28,6 +29,32 @@ class PenjualanBillerPulsaController extends Controller
             $data_penjualan= PenjualanBillerPulsa::with(['biller', 'biller_pulsa', 'pulsa', 'kartu'])->where('biller_id', auth()->user()->biller_id)->get();
         }
 
+        return view('penjualan-biller-pulsa.index', [
+            'data_penjualan' => $data_penjualan,
+            'total_keuntungan' => $total_keuntungan,
+        ]);
+    }
+
+    public function filterDate(Request $request)
+    {
+        $tanggal = $request->tanggal;
+        // $total_keuntungan = PenjualanDealerPulsa::sum('keuntungan');
+        if (auth()->user()->role_id != 4) {
+            $total_keuntungan = PenjualanBillerPulsa::sum('keuntungan');
+        } 
+        if (auth()->user()->role_id == 4) {
+            $total_keuntungan = PenjualanBillerPulsa::where('biller_id', auth()->user()->biller_id)->sum('keuntungan');
+        }
+        // $data_pembelian = PembelianDealerKartuPerdana::with(['dealer_pulsa', 'pulsa', 'kartu'])->get();
+        if (auth()->user()->role_id != 4) {
+            $data_penjualan = PenjualanBillerPulsa::with(['biller', 'kartu'])
+            ->whereDate('created_at', $tanggal)->get();
+        }
+        if (auth()->user()->role_id == 4) {
+            $data_penjualan = PenjualanBillerPulsa::with(['biller', 'kartu'])
+            ->where('biller_id', auth()->user()->biller_id)
+            ->whereDate('created_at', $tanggal)->get();
+        }
         return view('penjualan-biller-pulsa.index', [
             'data_penjualan' => $data_penjualan,
             'total_keuntungan' => $total_keuntungan,
@@ -82,5 +109,24 @@ class PenjualanBillerPulsaController extends Controller
         Session::flash('status', 'success');
         Session::flash('message', 'Tambah data sukses');
         return redirect('/penjualan-biller-pulsa');
+    }
+
+    public function exportPdf()
+    {
+        if (auth()->user()->role_id == 1) {
+            $penjualan_bp = PenjualanBillerPulsa::get();
+            $pdf = Pdf::loadView('penjualan-biller-pulsa.export-pdf', ['penjualan_bp' => $penjualan_bp]);
+            return $pdf->download('penjualan-biller-pulsa.pdf');
+        }
+        
+        if (auth()->user()->role_id == 4) {
+            $penjualan_bp = PenjualanBillerPulsa::where('biller_id', auth()->user()->biller_id)->get();
+            $biller = PenjualanBillerPulsa::where('biller_id', auth()->user()->biller_id)->first();
+            $pdf = Pdf::loadView('penjualan-biller-pulsa.export-pdf', [
+                'penjualan_bp' => $penjualan_bp,
+                'biller' => $biller,
+            ]);
+            return $pdf->download('penjualan-biller-pulsa-'.$biller->biller->nama.'.pdf');
+        }
     }
 }

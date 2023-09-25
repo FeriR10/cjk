@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\BillerKartuPerdana;
 use Illuminate\Support\Facades\Session;
 use App\Models\PenjualanBillerKartuPerdana;
@@ -27,6 +28,32 @@ class PenjualanBillerKartuPerdanaController extends Controller
             $data_penjualan= PenjualanBillerKartuPerdana::with(['biller', 'kartu'])->where('biller_id', auth()->user()->biller_id)->get();
         }
 
+        return view('penjualan-biller-kartu-perdana.index', [
+            'data_penjualan' => $data_penjualan,
+            'total_keuntungan' => $total_keuntungan,
+        ]);
+    }
+
+    public function filterDate(Request $request)
+    {
+        $tanggal = $request->tanggal;
+        // $total_keuntungan = PenjualanDealerPulsa::sum('keuntungan');
+        if (auth()->user()->role_id != 4) {
+            $total_keuntungan = PenjualanBillerKartuPerdana::sum('keuntungan');
+        } 
+        if (auth()->user()->role_id == 4) {
+            $total_keuntungan = PenjualanBillerKartuPerdana::where('biller_id', auth()->user()->biller_id)->sum('keuntungan');
+        }
+        // $data_pembelian = PembelianDealerKartuPerdana::with(['dealer_pulsa', 'pulsa', 'kartu'])->get();
+        if (auth()->user()->role_id != 4) {
+            $data_penjualan = PenjualanBillerKartuPerdana::with(['biller', 'kartu'])
+            ->whereDate('created_at', $tanggal)->get();
+        }
+        if (auth()->user()->role_id == 4) {
+            $data_penjualan = PenjualanBillerKartuPerdana::with(['biller', 'kartu'])
+            ->where('biller_id', auth()->user()->biller_id)
+            ->whereDate('created_at', $tanggal)->get();
+        }
         return view('penjualan-biller-kartu-perdana.index', [
             'data_penjualan' => $data_penjualan,
             'total_keuntungan' => $total_keuntungan,
@@ -76,5 +103,24 @@ class PenjualanBillerKartuPerdanaController extends Controller
         Session::flash('status', 'success');
         Session::flash('message', 'Tambah data sukses');
         return redirect('/penjualan-biller-kartu-perdana');
+    }
+
+    public function exportPdf()
+    {
+        if (auth()->user()->role_id == 1) {
+            $penjualan_bkp = PenjualanBillerKartuPerdana::get();
+            $pdf = Pdf::loadView('penjualan-biller-kartu-perdana.export-pdf', ['penjualan_bkp' => $penjualan_bkp]);
+            return $pdf->download('penjualan-biller-kartu-perdana.pdf');
+        }
+        
+        if (auth()->user()->role_id == 4) {
+            $penjualan_bkp = PenjualanBillerKartuPerdana::where('biller_id', auth()->user()->biller_id)->get();
+            $biller = PenjualanBillerKartuPerdana::where('biller_id', auth()->user()->biller_id)->first();
+            $pdf = Pdf::loadView('penjualan-biller-kartu-perdana.export-pdf', [
+                'penjualan_bkp' => $penjualan_bkp,
+                'biller' => $biller,
+            ]);
+            return $pdf->download('penjualan-biller-kartu-perdana-'.$biller->biller->nama.'.pdf');
+        }
     }
 }

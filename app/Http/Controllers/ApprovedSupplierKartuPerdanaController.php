@@ -26,6 +26,24 @@ class ApprovedSupplierKartuPerdanaController extends Controller
             'data_pembelian' => $data_pembelian,
         ]);
     }
+    
+    public function filterDate(Request $request)
+    {
+        $tanggal = $request->tanggal;
+        // $data_pembelian = PembelianDealerKartuPerdana::with(['dealer_pulsa', 'pulsa', 'kartu'])->get();
+        if (auth()->user()->role_id != 2) {
+            $data_pembelian = PembelianDealerKartuPerdana::with(['dealer', 'kartu'])
+            ->whereDate('created_at', $tanggal)->get();
+        }
+        if (auth()->user()->role_id == 2) {
+            $data_pembelian = PembelianDealerKartuPerdana::with(['dealer', 'kartu'])
+            ->where('supplier_id', auth()->user()->supplier_id)
+            ->whereDate('created_at', $tanggal)->get();
+        }
+        return view('approved-supplier-kartu-perdana.index', [
+            'data_pembelian' => $data_pembelian,
+        ]);
+    }
 
     public function approved($id)
     {

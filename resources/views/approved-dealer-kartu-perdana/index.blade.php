@@ -19,6 +19,17 @@
                     </ol>
                 </div>
             </div>
+            <div class="row">
+                <div class="col">
+                    <form class="form-inline" action="/approved-dealer-kartu-perdana/filter-date">
+                        @csrf
+                        <label for="" class="mr-1">Tanggal :</label>
+                        <input type="date" class="form-control mr-1" name="tanggal">
+                        <button type="submit" class="btn btn-success ml-1">Cari Data</button>
+                        <a href="/approved-dealer-kartu-perdana" class="btn btn-warning ml-1">Refresh Data</a>
+                    </form>
+                </div>
+            </div>
         </div><!-- /.container-fluid -->
     </section>
 
@@ -56,6 +67,7 @@
                             <th>Total Harga Jual</th>
                             <th>Total Harga Beli</th>
                             <th>Status</th>
+                            <th>Tanggal</th>
                             <th>Option</th>
                         </tr>
                     </thead>
@@ -78,6 +90,7 @@
                                     <button class="btn btn-success btn-sm">{{ $pembelian->status }}</button>
                                 @endif
                             </td>
+                            <td>{{ $pembelian->created_at->format('Y-m-d') }}</td>
                             <td>
                                 @if (auth()->user()->role_id == 4)
                                 {{-- <a class="btn btn-danger btn-sm" href="/pembelian/{{ $pembelian->id }}/delete"
@@ -106,6 +119,7 @@
                             <th>Total Harga Jual</th>
                             <th>Total Harga Beli</th>
                             <th>Status</th>
+                            <th>Tanggal</th>
                             <th>Option</th>
                         </tr>
                     </tfoot>
