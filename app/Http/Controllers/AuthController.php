@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 class AuthController extends Controller
 {
@@ -79,6 +80,13 @@ class AuthController extends Controller
             'email' => 'required|unique:users',
             'password' => 'required',
         ]);
+
+        if ($request->file('image')) {
+            $fileName = $this->generateRandomString();
+            $extension = $request->file('image')->extension();
+            $image = $fileName.'.'.$extension;
+            Storage::putFileAs('images', $request->file('image'), $image);
+        }
 
         $user = new User;
         $user->name = $request->name;
